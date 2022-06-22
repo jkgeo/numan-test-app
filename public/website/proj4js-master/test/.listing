@@ -1,0 +1,8 @@
+drwxrwsr-x   2 data_user users        4096 Mar 13 06:04 .
+drwxrwsr-x   5 data_user users        4096 Mar 13 06:04 ..
+-rw-rw-r--   1 data_user users        1559 Mar 13 06:04 amd.html
+-rw-rw-r--   1 data_user users      245824 Mar 13 06:04 ntv2_0_downsampled.gsb
+-rw-rw-r--   1 data_user users         705 Mar 13 06:04 opt.html
+-rw-rw-r--   1 data_user users          35 Mar 13 06:04 package.json.js
+-rw-rw-r--   1 data_user users       56155 Mar 13 06:04 testData.js
+-rw-rw-r--   1 data_user users       26468 Mar 13 06:04 test.js
