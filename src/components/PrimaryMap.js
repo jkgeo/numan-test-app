@@ -21,6 +21,9 @@ import {
     useMap 
 } from 'react-leaflet'
 
+import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
+
 const Layers = () => {
     const state = useSelector((state) => state);
     const dispatch = useDispatch();
@@ -138,7 +141,7 @@ const Layers = () => {
         let results_table = {};
 
         function update_table(){
-            $("#results").html("");
+            // $("#results").html("");
             let keys = Object.keys(results_table);
             let int_keys = keys.map(x => parseInt(x));
             int_keys.sort();
@@ -160,8 +163,10 @@ const Layers = () => {
                     });
                     outputhtml += "</ol>";
                 });
-                $("#results").append(outputhtml);
+                
+                // $("#results").append(outputhtml);
             });
+            dispatch({type:'results', value: results_table })
             // results_table[q_set][field_idx][query_type]
         };
 
@@ -381,7 +386,7 @@ const Layers = () => {
 export const PrimaryMap = () => {
 
     return (
-        <>
+        <Box sx={{mt: 3}}>
             <MapContainer center={[39, -76]} zoom={13}
                 style={{
                     width: '800px',
@@ -397,8 +402,14 @@ export const PrimaryMap = () => {
 
             <p style={{textAlign: 'center'}} >
                 Load Field Boundaries from a KMZ/KML file:
-                <input type="file" id="fileInput"/>
+                <label htmlFor="fileInput">
+                    <input style={{display: 'none'}} id="fileInput" type="file"></input>
+                    <Button variant="contained" component="span">
+                        Upload
+                    </Button>
+                </label>
             </p>
-        </>
+            
+        </Box>
     )
 }

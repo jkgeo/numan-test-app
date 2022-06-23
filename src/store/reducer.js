@@ -1,14 +1,14 @@
 
 export const initialState = {
-    layers: []
+    results: null
 }
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case "layers":
+        case "results":
             return {
                 ...state,
-                layers: action.value
+                results: action.value
             };
         default:
             return state;
