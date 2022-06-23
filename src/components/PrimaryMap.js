@@ -389,8 +389,8 @@ export const PrimaryMap = () => {
         <Box sx={{mt: 3}}>
             <MapContainer center={[39, -76]} zoom={13}
                 style={{
-                    width: '800px',
-                    height: '600px',
+                    width: '600px',
+                    height: '500px',
                     border: '1px solid #ccc',
                     display: 'block',
                     marginLeft: 'auto',

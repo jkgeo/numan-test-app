@@ -6,23 +6,24 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { Container } from '@mui/material';
 import Divider from '@mui/material/Divider'
-
+import CenteredTabs from './components/CenteredTabs';
 
 function App() {
   return (
     <Container id="main">
-      
-      <Stack spacing={2}>
+
+      <Stack spacing={2} alignItems= "center">
+        <CenteredTabs />
         <PrimaryMap />
-        <Divider/>
+        <Divider flexItem="true" />
         <Soils />
-        <Divider/>
+        <Divider flexItem="true" />
         <Watershed />
-        <Divider/>
+        <Divider flexItem="true" />
         <Counties />
-        <Divider/>
+        <Divider flexItem="true" />
         <Physio />
-        <Divider/> 
+        <Divider flexItem="true" /> 
         <Tax />
       </Stack>
       

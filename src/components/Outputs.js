@@ -5,6 +5,9 @@ import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 
 export const Soils = () => {
     const state = useSelector((state) => state);
@@ -13,16 +16,17 @@ export const Soils = () => {
     const columns = [
         { 
             field: 'superkey', 
-            headerName: 'superkey',
-            width: 400
+            headerName: 'Soil Type ',
+            width: 500
         },
         {
           field: 'area',
-          headerName: 'area',
+          headerName: 'Area sq. m.',
         },
         {
           field: 'pct',
-          headerName: 'pct',
+          headerName: 'Percent',
+          width: 75
         },
       ];
     
@@ -65,12 +69,12 @@ export const Soils = () => {
     }, [state])
 
     return (
-        <Box sx={{ height: 500, m: 5, overflow: 'auto'}}>
+        <Box sx={{ height: 500, width: 750, m: 5, overflow: 'auto'}}>
             
         {fields ? 
             <Box sx={{height: '100%'}}>
-                <Typography variant="h3" gutterBottom component="div">
-                    SOILS
+                <Typography variant="h3" gutterBottom component="div" align= "center">
+                    Soils
                 </Typography>
 
                 {
@@ -97,16 +101,16 @@ export const Watershed = () => {
     const columns = [
         { 
             field: 'superkey', 
-            headerName: 'superkey',
+            headerName: 'Watershed ID',
             width: 400
         },
         {
           field: 'area',
-          headerName: 'area',
+          headerName: 'Area sq. m.',
         },
         {
           field: 'pct',
-          headerName: 'pct',
+          headerName: 'Percent',
         },
       ];
     
@@ -149,11 +153,11 @@ export const Watershed = () => {
     }, [state])
 
     return (
-        <Box sx={{ height: 500, overflow: 'auto'}}>
+        <Box sx={{ height: 500, width: 750, overflow: 'auto'}}>
             
             {fields ? 
                 <Box sx={{height: '100%'}}>
-                    <Typography variant="h3" gutterBottom component="div">
+                    <Typography variant="h3" gutterBottom component="div" align= "center">
                         Watersheds
                     </Typography>
 
@@ -181,16 +185,16 @@ export const Counties = () => {
     const columns = [
         { 
             field: 'superkey', 
-            headerName: 'superkey',
+            headerName: 'County',
             width: 400
         },
         {
           field: 'area',
-          headerName: 'area',
+          headerName: 'Area sq. m.',
         },
         {
           field: 'pct',
-          headerName: 'pct',
+          headerName: 'Percent',
         },
       ];
     
@@ -233,11 +237,11 @@ export const Counties = () => {
     }, [state])
 
     return (
-        <Box sx={{ height: 500, overflow: 'auto'}}>
+        <Box sx={{ height: 500, width: 750, overflow: 'auto'}}>
             
             {fields ? 
                 <Box sx={{height: '100%'}}>
-                    <Typography variant="h3" gutterBottom component="div">
+                    <Typography variant="h3" gutterBottom component="div" align= "center">
                         County
                     </Typography>
 
@@ -265,16 +269,16 @@ export const Physio = () => {
     const columns = [
         { 
             field: 'superkey', 
-            headerName: 'superkey',
+            headerName: 'Physiographic Region',
             width: 400
         },
         {
           field: 'area',
-          headerName: 'area',
+          headerName: 'Area',
         },
         {
           field: 'pct',
-          headerName: 'pct',
+          headerName: 'Percent',
         },
       ];
     
@@ -317,14 +321,14 @@ export const Physio = () => {
     }, [state])
 
     return (
-        <Box sx={{ height: 500, overflow: 'auto'}}>
+        <Box sx={{ height: 500, width: 750, overflow: 'auto'}}>
             
             {fields ? 
                 <Box sx={{height: '100%'}}>
-                    <Typography variant="h3" gutterBottom component="div">
+                    <Typography variant="h3" gutterBottom component="div" align= "center">
                         Physios
                     </Typography>
-
+                    
                     {
                     fields.map(field => (
                         <>
@@ -349,16 +353,16 @@ export const Tax = () => {
     const columns = [
         { 
             field: 'superkey', 
-            headerName: 'superkey',
-            width: 400
+            headerName: 'Tax Lot',
+            width: 500
         },
         {
           field: 'area',
-          headerName: 'area',
+          headerName: 'Area sq. m.',
         },
         {
           field: 'pct',
-          headerName: 'pct',
+          headerName: 'Percent',
         },
       ];
     
@@ -401,12 +405,12 @@ export const Tax = () => {
     }, [state])
 
     return (
-        <Box sx={{ height: 500, overflow: 'auto'}}>
+        <Box sx={{ height: 500, width: 750, overflow: 'auto'}}>
             
             {fields ? 
                 <Box sx={{height: '100%'}}>
-                    <Typography variant="h3" gutterBottom component="div">
-                        TAX
+                    <Typography variant="h3" gutterBottom component="div" align= "center">
+                        Tax
                     </Typography>
 
                     {
