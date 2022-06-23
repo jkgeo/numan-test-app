@@ -17,12 +17,12 @@ function App() {
         <Divider/>
         <Soils />
         <Divider/>
-        {/* <Watershed />
+        <Watershed />
         <Divider/>
         <Counties />
         <Divider/>
         <Physio />
-        <Divider/> */}
+        <Divider/> 
         <Tax />
       </Stack>
       
