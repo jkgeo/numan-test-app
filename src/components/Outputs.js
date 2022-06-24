@@ -8,6 +8,7 @@ import Divider from '@mui/material/Divider'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const Soils = () => {
     const state = useSelector((state) => state);
@@ -269,7 +270,7 @@ export const Physio = () => {
     const columns = [
         { 
             field: 'superkey', 
-            headerName: 'Physiographic Region',
+            headerName: 'Region',
             width: 400
         },
         {
@@ -326,7 +327,7 @@ export const Physio = () => {
             {fields ? 
                 <Box sx={{height: '100%'}}>
                     <Typography variant="h3" gutterBottom component="div" align= "center">
-                        Physios
+                        Physiographic Region
                     </Typography>
                     
                     {
@@ -335,7 +336,8 @@ export const Physio = () => {
                             <Typography variant="h6" gutterBottom component="div">
                                 Field: #{field.id}
                             </Typography>
-                            <DataGrid sx={{height: '75%'}} key={field.id} columns={columns} rows={field.physios} />
+
+                            <DataGrid sx={{ height: '100%' }} key={field.id} columns={columns} rows={field.physios} />
                         </>
                         ))
                     }
