@@ -7,8 +7,15 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { ThemeProvider, createTheme, styled } from '@mui/material/styles';
+
+const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
+    padding: theme.spacing(2),
+    borderTop: '1px solid rgba(0, 0, 0, .125)',
+    height: 500
+  }));
 
 export const Soils = () => {
     const state = useSelector((state) => state);
@@ -81,10 +88,20 @@ export const Soils = () => {
                 {
                 fields.map(field => (
                     <>
-                        <Typography variant="h6" gutterBottom component="div">
-                            Field: #{field.id}
-                        </Typography>
-                        <DataGrid sx={{height: '75%'}} key={field.id} columns={columns} rows={field.soils} />
+                        <Accordion TransitionProps={{ unmountOnExit: true }}>
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography variant="h6" gutterBottom component="div">
+                                    Field: #{field.id}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.soils} />
+                            </AccordionDetails>
+                        </Accordion>
                     </>
                     ))
                 }
