@@ -17,7 +17,7 @@ import Typography from '@mui/material/Typography';
 function App() {
 
   const itemRef = useRef(null);
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(7);
   const handleChange = (_event, newValue) => {
     setValue(newValue);
   };

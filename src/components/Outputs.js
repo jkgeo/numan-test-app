@@ -88,7 +88,7 @@ export const Soils = () => {
                 {
                 fields.map(field => (
                     <>
-                        <Accordion TransitionProps={{ unmountOnExit: true }}>
+                        <Accordion >
                             <AccordionSummary
                                 expandIcon={<ExpandMoreIcon />}
                                 aria-controls="panel1a-content"
