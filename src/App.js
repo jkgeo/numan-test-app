@@ -6,13 +6,13 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import { Container, Fab } from '@mui/material';
 import Divider from '@mui/material/Divider'
-import CenteredTabs from './components/CenteredTabs';
 import React, { useState, useEffect, useRef } from 'react';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AppBar from '@mui/material/AppBar';
 import Typography from '@mui/material/Typography';
+import { SoilsType } from './components/SoilsType';
 
 function App() {
 
@@ -38,46 +38,52 @@ function App() {
         </Typography>
       </AppBar>
       <Stack spacing={2} alignItems= "center">
-        <PrimaryMap />
         <Divider flexItem="true" />
-        <div style={{position: "fixed", backgroundColor: "white", zIndex:"1"}}>
-          <Tabs value={value} onChange={handleChange} centered >
+        <div style={{position: "fixed", backgroundColor: "white", zIndex:"1", width: 1000}}>
+          <Tabs sx={{mt: 1}}value={value} onChange={handleChange} centered >
+            <Tab label="Map" />
             <Tab label="Soils" />
             <Tab label="Watersheds" />
             <Tab label="County" />
             <Tab label="Physios" />
             <Tab label="Tax" />
           </Tabs>
+        </div>
+        <div ref={value === 0 ? itemRef : null}>
+        <PrimaryMap />
         </div>  
         <div 
-          ref={value === 0 ? itemRef : null}
+          ref={value === 1 ? itemRef : null}
         >
           <Soils />
         </div>
         <Divider flexItem="true"/>
         <div
-          ref={value === 1 ? itemRef : null}
+          ref={value === 2 ? itemRef : null}
         >
           <Watershed />
         </div>
         <Divider flexItem="true" />
         <div
-          ref={value === 2 ? itemRef : null}
+          ref={value === 3 ? itemRef : null}
         >
           <Counties />
         </div>
         <Divider flexItem="true" />
         <div
-          ref={value === 3 ? itemRef : null}
+          ref={value === 4 ? itemRef : null}
         >
           <Physio />
         </div>
         <Divider flexItem="true" /> 
         <div
-          ref={value === 4 ? itemRef : null}
+          ref={value === 5 ? itemRef : null}
         >
           <Tax />
         </div>
+        {/* <div>
+          <SoilsType />
+        </div> */}
       </Stack>
       
     </Container>

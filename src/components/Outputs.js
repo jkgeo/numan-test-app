@@ -1,7 +1,7 @@
 import { getBottomNavigationUtilityClass } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider'
@@ -18,6 +18,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   }));
 
 export const Soils = () => {
+    function CustomToolbar() {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarExport csvOptions={{fileName: 'NuMan_SoilTable'}}/>
+            </GridToolbarContainer>
+        );
+    }
+
     const state = useSelector((state) => state);
     let [fields, setFields] = useState(null)
 
@@ -99,7 +107,7 @@ export const Soils = () => {
                                 </Typography>
                             </AccordionSummary>
                             <AccordionDetails>
-                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.soils} />
+                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.soils} components={{Toolbar: CustomToolbar}} />
                             </AccordionDetails>
                         </Accordion>
                     </>
@@ -113,6 +121,13 @@ export const Soils = () => {
 }
 
 export const Watershed = () => {
+    function CustomToolbar() {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarExport csvOptions={{fileName: 'NuMan_WatershedTable'}}/>
+            </GridToolbarContainer>
+        );
+    }
     const state = useSelector((state) => state);
     let [fields, setFields] = useState(null)
 
@@ -182,11 +197,21 @@ export const Watershed = () => {
                     {
                     fields.map(field => (
                         <>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Field: #{field.id}
-                            </Typography>
-                            <DataGrid sx={{height: '75%'}} key={field.id} columns={columns} rows={field.watersheds} />
-                        </>
+                        <Accordion >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography variant="h6" gutterBottom component="div">
+                                    Field: #{field.id}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.watersheds} components={{Toolbar: CustomToolbar}} />
+                            </AccordionDetails>
+                        </Accordion>
+                    </>
                         ))
                     }
 
@@ -197,6 +222,14 @@ export const Watershed = () => {
 }
 
 export const Counties = () => {
+    function CustomToolbar() {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarExport csvOptions={{fileName: 'NuMan_CountyTable'}}/>
+            </GridToolbarContainer>
+        );
+    }
+
     const state = useSelector((state) => state);
     let [fields, setFields] = useState(null)
 
@@ -266,11 +299,21 @@ export const Counties = () => {
                     {
                     fields.map(field => (
                         <>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Field: #{field.id}
-                            </Typography>
-                            <DataGrid sx={{height: '75%'}} key={field.id} columns={columns} rows={field.counties} />
-                        </>
+                        <Accordion >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography variant="h6" gutterBottom component="div">
+                                    Field: #{field.id}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.counties} components={{Toolbar: CustomToolbar}} />
+                            </AccordionDetails>
+                        </Accordion>
+                    </>
                         ))
                     }
 
@@ -281,6 +324,14 @@ export const Counties = () => {
 }
 
 export const Physio = () => {
+    function CustomToolbar() {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarExport csvOptions={{fileName: 'NuMan_PhysiosTable'}}/>
+            </GridToolbarContainer>
+        );
+    }
+
     const state = useSelector((state) => state);
     let [fields, setFields] = useState(null)
 
@@ -350,12 +401,21 @@ export const Physio = () => {
                     {
                     fields.map(field => (
                         <>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Field: #{field.id}
-                            </Typography>
-
-                            <DataGrid sx={{ height: '100%' }} key={field.id} columns={columns} rows={field.physios} />
-                        </>
+                        <Accordion >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography variant="h6" gutterBottom component="div">
+                                    Field: #{field.id}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.physios} components={{Toolbar: CustomToolbar}} />
+                            </AccordionDetails>
+                        </Accordion>
+                    </>
                         ))
                     }
 
@@ -366,6 +426,14 @@ export const Physio = () => {
 }
 
 export const Tax = () => {
+    function CustomToolbar() {
+        return (
+            <GridToolbarContainer>
+                <GridToolbarExport csvOptions={{fileName: 'NuMan_TaxTable'}}/>
+            </GridToolbarContainer>
+        );
+    }
+
     const state = useSelector((state) => state);
     let [fields, setFields] = useState(null)
 
@@ -435,11 +503,21 @@ export const Tax = () => {
                     {
                     fields.map(field => (
                         <>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Field: #{field.id}
-                            </Typography>
-                            <DataGrid sx={{height: '75%'}} key={field.id} columns={columns} rows={field.taxes} />
-                        </>
+                        <Accordion >
+                            <AccordionSummary
+                                expandIcon={<ExpandMoreIcon />}
+                                aria-controls="panel1a-content"
+                                id="panel1a-header"
+                            >
+                                <Typography variant="h6" gutterBottom component="div">
+                                    Field: #{field.id}
+                                </Typography>
+                            </AccordionSummary>
+                            <AccordionDetails>
+                                <DataGrid sx={{ height: '75%' }} key={field.id} columns={columns} rows={field.taxes} components={{Toolbar: CustomToolbar}} />
+                            </AccordionDetails>
+                        </Accordion>
+                    </>
                         ))
                     }
 

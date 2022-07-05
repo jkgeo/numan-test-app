@@ -6,12 +6,15 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 import proj4 from "proj4";
-import proj4leaflet from 'proj4leaflet';
 import { area, intersect } from '@turf/turf';
 import { arcgisToGeoJSON, geojsonToArcGIS } from "@terraformer/arcgis"
 import 'leaflet-draw/dist/leaflet.draw'
 import * as omnivore from '@mapbox/leaflet-omnivore'
 import JSZip from 'jszip';
+
+import "leaflet-geosearch/dist/geosearch.css";
+import {GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
+import icon from "./SearchMarker.js";
 
 import { 
     MapContainer, 
@@ -23,6 +26,26 @@ import {
 
 import Button from '@mui/material/Button';
 import { Box } from '@mui/material';
+
+function LeafletgeoSearch() {
+    const map = useMap();
+    useEffect(() => {
+      const provider = new OpenStreetMapProvider();
+  
+      const searchControl = new GeoSearchControl({
+        provider,
+        marker: {
+          icon
+        }
+      });
+  
+      map.addControl(searchControl);
+  
+      return () => map.removeControl(searchControl);
+    }, []);
+  
+    return null;
+  }
 
 const Layers = () => {
     const state = useSelector((state) => state);
@@ -205,7 +228,7 @@ const Layers = () => {
                     superkey: joinedvalues,
                     'area':intersect_area.toFixed(2),
                     'pct':(100. * (area(intersection) / user_field_area)).toFixed(2)
-                };
+                }; 
                 results_table[q_set][field_idx][query_type].push(results);
             });
             update_table();
@@ -386,7 +409,7 @@ const Layers = () => {
 export const PrimaryMap = () => {
 
     return (
-        <Box sx={{mt: 3}}>
+        <Box sx={{mt: 7}}>  
             <MapContainer center={[39, -76]} zoom={13}
                 style={{
                     width: '600px',
@@ -396,8 +419,8 @@ export const PrimaryMap = () => {
                     marginLeft: 'auto',
                     marginRight: 'auto'
                 }}>
-
-                <Layers />           
+                <LeafletgeoSearch />    
+                <Layers />        
             </MapContainer>
 
             <p style={{textAlign: 'center'}} >
