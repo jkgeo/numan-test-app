@@ -31,12 +31,16 @@ function LeafletgeoSearch() {
     const map = useMap();
     useEffect(() => {
       const provider = new OpenStreetMapProvider();
-  
+
       const searchControl = new GeoSearchControl({
         provider,
+        style: 'button',
         marker: {
           icon
-        }
+        },
+        maxMarkers: 15,
+        keepResult: true,
+        autoClose: true,
       });
   
       map.addControl(searchControl);
