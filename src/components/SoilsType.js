@@ -67,27 +67,28 @@ export const SoilsType = () => {
                             soilList.push({
                                 id: index,
                                 superkey: soil['superkey'],
-                                area: soil['area'],
-                                pct: soil['pct']
+                                area: Number(soil['area']),
+                                pct: Number(soil['pct'])
                             })
                         })
-                        let soilListAgg = soilList.reduce((acc, curr) => {
-                            const objInAcc = acc.find((o) => o.superkey === curr.superkey);
-                            if (objInAcc) {
-                                objInAcc.pct += curr.pct;
-                                objInAcc.area += curr.area;
+                        const soilsCheck = {}
+                        soilList.forEach(soilType => {
+                            if (soilType.superkey in soilsCheck) {
+                                soilsCheck[soilType.superkey].area += soilType.area;
+                                soilsCheck[soilType.superkey].pct += soilType.pct;
                             
+                            } else {
+                                soilsCheck[soilType.superkey] = soilType
                             }
-                                else acc.push(curr);
-                            return acc;
+                            
                           }, []);
                           
-                          console.log(soilListAgg);
+                          console.log(soilsCheck);
 
-                        fieldList.push({'id': fieldID, 'soils': soilListAgg})
+                        fieldList.push({'id': fieldID, 'soils': soilsCheck})
                                     
                     }
-                    
+                    //fieldList.push({ id: fieldID, soils: soilList });
                 }
             }
 

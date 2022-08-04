@@ -81,9 +81,9 @@ function App() {
         >
           <Tax />
         </div>
-        {/* <div>
+        <div>
           <SoilsType />
-        </div> */}
+        </div>
       </Stack>
       
     </Container>
